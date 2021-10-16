@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Retinanalyzer</title>
+	<meta name="description" content="Retinanalyzer" />
+	<meta name="msapplication-TileColor" content="#00a8ff">
+	<meta name="msapplication-config" content="img/favicons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<!-- Normalize -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<!-- Owl -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/owl.css' %}">
+	<!-- Animate.css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.1.0/css/font-awesome.min.css' %}">
+	<!-- Elegant Icons -->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/eleganticons/et-icons.css' %}">
+	<!-- Main style -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cardio.css' %}">
+</head>
+
+<body style="overflow:hidden">
+	<div class="preloader">
+		<img src="{% static 'img/loader.gif' %}" alt="Preloader image">
+	</div>
+	
+	<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+     <a href="" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i><b>Free Diabetic Retinopathy Testing</b></a>
+  
+  <a href="signup" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+    Login
+  </a>
+ </div>
+</div>
+	
+	<header id="intro">
+		<div class="container">
+			<div class="table">
+				<div class="header-text">
+					<div class="row">
+						<div class="col-md-12 text-center">
+                            {% if tested %}
+                            <!--img src="{% static '/uploaded/uploaded.jpg' %}">
+                            <p>{{uploaded_file_url}}</p-->
+							<h3 class="light white">The patient is diagnosed with Diabetic Retinopathy with a confidence of {{percent}}</h3>
+							<h3 class="light white">You are in <b>"{{category}}"</b> category</h3>
+							<h1 class="white typed" style="font-size:30px">You need to take medical advice from a doctor.</h1>
+							<span class="typed-cursor">|</span>
+                            {% else %}
+                            <h3 class="light white">No Issues Detected.</h3>
+							<h1 class="white typed" style="font-size:30px">Your eyes are totaly fine.</h1>
+							<span class="typed-cursor">|</span>
+                            {% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- Scripts -->
+	<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/wow.min.js' %}"></script>
+	<script src="{% static 'js/typewriter.js' %}"></script>
+	<script src="{% static 'js/jquery.onepagenav.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

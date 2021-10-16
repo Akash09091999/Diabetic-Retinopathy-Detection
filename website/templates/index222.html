@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Username</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+.zoom {
+ 
+  transition: transform .2s; /* Animation */
+  width: 200px;
+ 
+}
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+</style>
+<body class="w3-theme-l5">
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i><b>Free Diabetic Retinopathy Testing</b></a>
+  <a
+  </div>
+  <a href="logout" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+   Logout
+  </a>
+ </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">UserName</a>
+</div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+            <h4 class="w3-center"><b>{{n}}</b></h4>
+         <p class="w3-center"><img src="{% static 'img/patient2.png' %}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <hr>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>{{c}}, India</p>
+        <p><i class="fa fa-calendar-check-o fa-fw w3-margin-right w3-text-theme"></i>{{a}}</p> 
+        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>{{do}}</p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-pencil fa-fw w3-margin-right"></i>Doctor's Name :</button>
+          <div id="Demo1" class="w3-hide w3-container">
+            <br>  
+            <form action="setdoctor" method="POST">
+				{% csrf_token %}
+                <label for="dname">Doctor's Name :</label>
+                <select name="cars">
+				{% for i in dd %}
+				
+				<option value="{{i.id}}">{{i.Name}}</option>
+					
+				
+				{% endfor %}
+				</select>
+
+				<br><br>       <input type="submit" value="Submit">
+                
+</form>
+              <br>
+          </div>
+         </div>      
+      </div>
+      <br>
+      
+     
+      <br>
+      
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Hi!</strong></p>
+        <p>It is recommended to take a test once a month.<a href="/" >Click here to take a test.</a></p>
+      </div>
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+    
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Your last test was conducted on : {{t.0.time}}</h6>
+              <h6 class="w3-opacity">Accuracy : {{t.0.accuracy}}</h6>
+                <a href="/"><button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Take a test</button> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="{% static 'img/patient2.png' %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">Total tests : {{total}}</span>
+        <h4>History</h4><br>
+        <hr class="w3-clear">
+        
+       
+		  <table class="table table-hover">
+				<thead><tr>
+					<th> Date & Time </th>
+					<th> Accuracy </th>
+					<th> Category </th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for item in t %}
+				<tr>
+					<td> {{item.time}}</td>
+					<td> {{item.accuracy}}</td>
+					<td> {{item.category}}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+		  </table>
+		  
+		
+        
+      </div>
+       
+
+      
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Retina image of your last test</b></p>
+		  <div class="zoom">
+          <img src="{% static 'user_last_photo/2.jpg' %}"  class="w3-circle" alt="Eye" style="width:170px">
+		  </div>
+          <p><strong>{{date}}</strong></p>
+          <p>{{time}}</p>
+         
+        </div>
+      </div>
+      <br>
+      <br>
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+<!-- Footer -->
+
+<footer class="w3-container w3-theme-d5">
+  <p>Powered by <a href="https://www.instagram.com/jay.patel.__/" target="_blank">L.D. ollege of Engineering</a></p>
+</footer>
+ 
+<script>
+// Accordion
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html> 
