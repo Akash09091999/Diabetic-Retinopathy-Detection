@@ -1,0 +1,2 @@
+# Diabetic Retinopathy Detection
+ Diabetic Retinopathy is one of the leading causes of blindness and eye disease in working-age the population of the developed world. This project is an attempt towards finding an automated way to detect this disease in its early phase. In this project, I am using supervised learning methods to classify a given set of images into various classes. For this task, I am employing various image processing techniques and filters to enhance many important features and then using a neural network for classification.
